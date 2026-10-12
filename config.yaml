@@ -1,0 +1,65 @@
+# Job Radar config. Change models, thresholds and queries here — never in code.
+
+models:
+  triage: anthropic/claude-haiku-5.5
+  scoring: anthropic/claude-sonnet-5.5
+
+# USD per 1M tokens, used only for the cost estimate on /status.
+pricing:
+  anthropic/claude-haiku-5.5: { input: 0.10, output: 0.50 }
+  anthropic/claude-sonnet-5.5: { input: 2.00, output: 10.00 }
+
+freshness_hours: 48
+
+thresholds:
+  green: 90
+  amber: 70
+
+# Keep a run cheap: cap how many NEW jobs get triaged / scored in one run.
+# Anything over the cap waits for the next run (it's still within 48h).
+limits:
+  max_triage_per_run: 150
+  max_score_per_run: 40
+  ats_concurrency: 6       # parallel company boards (still one request per board)
+  http_timeout_ms: 15000
+
+# Code-level title pre-filter (before any LLM call).
+title_filter:
+  include: ['product manager', 'product owner', 'technical product manager', '\bpm\b']
+  exclude:
+    - 'product marketing'
+    - 'project manager'
+    - 'program manager'
+    - 'programme manager'
+    - 'product designer'
+    - 'product analyst'
+    - 'associate product'
+    - '\bapm\b'
+    - 'intern'
+    - 'principal'
+    - 'group product'
+    - 'director'
+    - '\bhead of\b'
+    - '\bvp\b'
+    - 'vice president'
+    - 'lead product manager'
+    - 'staff product'
+    - 'chief product'
+
+serper:
+  # Google's "past 48 hours" filter.
+  tbs: 'qdr:h48'
+  results_per_query: 10   # >10 costs 2 Serper credits per search
+  # site:linkedin.com/jobs/view — individual LinkedIn job listings
+  job_queries:
+    - 'site:linkedin.com/jobs/view "product manager" (HRIS OR HRMS OR HCM OR "HR tech") remote'
+    - 'site:linkedin.com/jobs/view "product manager" (payroll OR EOR OR "global employment") remote'
+    - 'site:linkedin.com/jobs/view "product manager" ("people platform" OR "workforce management" OR recruiting) remote'
+    - 'site:linkedin.com/jobs/view "product manager" "B2B SaaS" remote India'
+  # Hiring posts by people
+  post_queries:
+    - 'site:linkedin.com/posts ("hiring" OR "we''re hiring") "product manager" (HRIS OR HRMS OR "HR tech" OR HRtech)'
+    - 'site:linkedin.com/posts ("hiring" OR "we''re hiring") "product manager" (payroll OR EOR OR "people platform")'
+    - 'site:linkedin.com/posts ("hiring" OR "we''re hiring") "product manager" "B2B SaaS" remote'
+    - 'site:x.com ("hiring" OR "we''re hiring") "product manager" (HRIS OR "HR tech" OR payroll OR "people platform")'
+    - 'site:x.com ("hiring" OR "we''re hiring") "product manager" "B2B SaaS" remote'

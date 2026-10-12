@@ -1,0 +1,45 @@
+Anupam Kalita
+Product Manager, 5 Years' Experience | B2B SaaS, HRIS & Payroll, Integrations, Agentic AI
+9972350448 | onu@poums.in | LinkedIn | Portfolio | Github
+Work Experience
+Product Manager, Repute
+HRIS Ecosystem | Bangalore, IN | Dec 2021 - Present
+● Built an embedded integrations marketplace 0-to-1 inside HRIS platforms (GreytHR, AdrenalinMAX, GelyxHR, PocketHRMS), with
+total coverage of around 35,000 employers across India and the Middle East.
+● Increased marketplace-sourced deals to 45% of solution providers' monthly closures in 6 months by building an ecosystem-led
+sales flow for listed integrations and a developers' platform that enables partner integrations to self-list across HRtech, Tax, ERP, ,
+Finance Systems, Accounting, Benefits, and ITSM.
+● Boosted recruitment & payroll module activation and usage by 5X in 3 months and grew MAU from 10,000 to 25,000 and ARR by
+4X in 18 months by executing Zapier-like workflow automations inside HRIS.
+● Grew the integration catalog from 75 to 175+ by replacing bespoke per-integration builds with a unified API layer on a canonical
+data model and giving each new integration a repeatable reference architecture instead of a custom build.
+● Grew HRIS ARR by 2X by shipping a live 4-agent AI assistant for end-to-end recruitment, payroll checks, onboarding, and
+compliance; defined the orchestration layer with the CTO, grounded answers in live HRIS data, and set accuracy benchmarks with
+human review.
+● Joined as a Founding Product Manager. Owned discovery, specs, and scope prioritization, QA, and release sign-off. Used Claude
+Code and other AI tools to prototype and ship small frontend changes.
+● Reduced statutory filing effort for HR teams from multiple days/weeks to just 10 minutes by building compliance workflows that
+push accurate payroll data downstream into government and financial systems from HRIS payroll modules, eliminating manual
+reconciliation, data preparation, and portal uploads for tax remittance.
+Marketing Manager, Moolya
+QA Solutions | Bangalore, IN | Dec 2019 - April 2021
+● Established Moolya as a leader in the QA solutions market by growing a QA Engineers' community from 0 to 16,000 members
+across the globe by introducing a QA advocacy program, monthly newsletters, and online hackathons.
+Program Manager - CX, Nestaway
+Co-live and House Rentals | Bangalore, IN | Oct 2016 - Dec 2019
+● Reduced user tickets by 10% and social media escalations by 50% within 3 months by gathering data from support tickets and
+analyzing them to understand recurring escalation patterns and redesigning the tenant journeys end to end.
+● Improved overall company NPS by 70% and converted 10% of detractors to promoters by running user interviews and targeted
+experiments and launching a rent rewards program that also improved on-time rental payments.
+● Saved INR 1,800 per user per month by migrating the customer experience team from an external CRM to an internal tool. Gathered
+requirements, wrote the PRD, drove deployment with Tech and Product, and designed the training program for around 150 team
+members.
+Skills
+Product: User research & discovery, 0-to-1 builds, stakeholder management, async and cross-functional collaboration, UX/UI, GTM, user-led
+product building, A/B testing, engineering-led product building.
+Domain: HRMS, HRIS, Payroll, Unified API, Platform Integrations, HR Automations, Accounting sync, ERP integrations, HRtech, iPaaS, SaaS
+Technical: API design, schema design and mapping, SQL, CTE, SDLC, data modelling, AI coding
+AI: LLM, RAG, Eval design, AI prototyping, Agent orchestration, Agentic AI
+Tools: Claude Code, Jira, Metabase, MySQL, Figma, Google Analytics
+Education
+Bachelor of Engineering, Mechanical Engineering | Annamalai University | 2011 - 2015 | 8.7/10 CGPA

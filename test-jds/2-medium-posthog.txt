@@ -1,0 +1,129 @@
+Company: PostHog
+Title: Product Manager (ex-founder or ex-product engineer)
+Location: Remote Remote
+Url: https://jobs.ashbyhq.com/posthog/3c592b84-8b34-4ae4-ae23-cadce8f2212d
+
+ABOUT POSTHOG
+
+PostHog is your product’s context layer. It ingests and stores your analytics, errors, replays, and business data so you and your agents can query and act on it.
+
+We launched out of Y Combinator's W20 cohort https://posthog.com/handbook/story. We've since shipped more than a dozen products, including:
+
+ - A suite of analytics and observability tools, including product analytics https://posthog.com/product-analytics, replay vision https://posthog.com/replay-vision, AI observability https://posthog.com/ai-observability, and error tracking https://posthog.com/error-tracking
+
+ - PostHog MCP https://posthog.com/mcp for users and their agents to query and act on their product and business data
+
+ - Data warehouse https://posthog.com/context-warehouse/managed-warehouse so users can query product and customer data together using custom SQL insights.
+
+We are:
+
+ 1. Product-led. More than 500K organizations have installed PostHog, mostly driven by word-of-mouth. We have intensely strong product-market fit.
+
+ 2. Default alive https://paulgraham.com/aord.html. Revenue is growing incredibly quickly, and we're very efficient. We raise money to push ambition and grow faster, not to keep the lights on.
+
+ 3. Well-funded. We've raised more than $180m from some of the world's top investors. We're set up for a long, ambitious journey.
+
+We're focused on building an awesome product for end users, hiring exceptional teammates, shipping fast, and being as weird as possible https://posthog.com/deskhog. 
+
+ 
+
+
+THINGS WE CARE ABOUT
+
+ - Transparency: Everyone can read about our roadmap, how we pay (or even let go of) people, our strategy, and how we work, in our public company handbook https://posthog.com/handbook. Internally, we share revenue, notes and slides from board meetings, and fundraising plans, so everyone has the context they need to make good decisions.
+
+ - Autonomy: We don’t tell anyone what to do. Everyone chooses what to work on next based on what's going to have the biggest impact on our customers, and what they find interesting and motivating to work on. Engineers lead product teams https://posthog.com/handbook/wide-company and make product decisions https://posthog.com/handbook/which-products. Teams are flexible and easy to change when needed.
+
+ - Shipping fast: Why not now? https://posthog.com/handbook/values#why-not-now We want to build a lot of products; we can't do that shipping at a normal pace. We've built the company around small teams – autonomous, highly-efficient groups of cracked engineers https://posthog.com/founders/cracked-manifesto who can outship much larger companies because they own their products end-to-end.
+
+ - Time for building: Nothing gets shipped in a meeting. We're a natively remote company. We default to async communication – PRs > Issues > Slack. Tuesdays and Thursdays are meeting-free days https://posthog.com/handbook/company/culture#were-on-the-makers-schedule, and we prioritize heads down building time over perfect coordination. This will be the most productive job you've ever had.
+
+ - Ambition: We want to solve big problems. We strongly believe that aiming for the best possible upside, and sometimes missing, is better than never trying. We're optimistic about what's possible and our ability to get there.
+
+ - Being weird: Weird means redesigning an already world-class website for the 5th time. It means shipping literally every product that relates to customer data. It means building an objectively unnecessary developer toy https://posthog.com/deskhog with dubious shareholder value. Doing weird stuff is a competitive advantage. And it's fun.
+
+
+
+
+PRODUCT AT POSTHOG
+
+Product management plays a slightly different role at PostHog https://posthog.com/handbook/product/product-team than at most other companies and is incredibly important. Instead of micro-managing engineers, PMs are responsible for research, data, and setting high-level context across the organization. They work across multiple products https://posthog.com/handbook/product/product-team#small-team-membership to determine how products are being used, what the competitive landscape is like, and how users are feeling about PostHog. Using the usual PM jargon we could say PMs at PostHog are very discovery-focused and don’t engage in delivery https://www.svpg.com/discovery-vs-delivery/ almost at all.
+
+Among other things, they:
+
+ 1. Run growth reviews https://posthog.com/handbook/product/per-product-growth-reviews for products that have product-market-fit
+
+ 2. Dive into data research projects to answer challenging questions without obvious answers
+
+ 3. Organize user interviews https://posthog.com/handbook/product/user-feedback
+
+ 4. Provide just-in-time product feedback for new and existing features, following our principles of shipping and iterating quickly
+
+ 5. Coach product engineers on "how to do product https://posthog.com/handbook/engineering/product-engineering"
+
+If you want to know more about our philosophy of building products, read our article “Product Management is broken. Engineers can fix it.” https://posthog.com/newsletter/product-management-is-broken
+
+
+
+
+WHAT YOU WILL BE DOING:
+
+You will be joining PostHog as a Product Manager, working with one of our small engineering teams https://posthog.com/teams (with the potential to cover more than one team/product after your onboarding period), with a heavy emphasis on analyzing data, talking to users and owning the commercial aspects of your product(s):
+
+ - We have a growth review https://posthog.com/handbook/product/per-product-growth-reviews with every product every month. As the PM, you ensure we have the right metrics, dig into things that have changed, understand what users are doing, why they're churning, etc. You use the findings to figure out if we need to dig deeper into a trend or reprioritize what we're building.
+
+ - Across our 10+ https://posthog.com/pricing products (and counting!), we have thousands of paying customers and many more on the free tier. That’s a lot of users and a lot of data. Finding actionable patterns in this data is one of the key ingredients to reaching $100M ARR https://posthog.com/handbook/future. Example questions you might be answering:
+   
+   - How does revenue/usage churn for your product compare across different segments?
+   
+   - Which behaviours lead to long-term retention for your product?
+
+ - You keep an eye on the commercial side of things. Each of our products is competing with incumbents multiple times bigger both in revenue and employee size. You will lead the research into our competitors and the tooling landscape, and provide recommendations where we have the biggest untapped potential, whether it’s pricing, feature parity or even spinning out an adjacent product
+
+ - Things you choose to pick up. This could be a data deep dive outside the scope of the repeating growth reviews. Or figuring out how to package and price a new product that we want to perform better in terms of usage or revenue. Or it could be rubber-ducking the engineers to help them figure out the UX for a new product concept. This is a highly autonomous role, and you’re expected to figure out where it makes the most sense to spend your time.
+
+
+
+
+WHAT YOU WON’T BE DOING:
+
+❌ Backlog grooming (it always sounded gross anyway)
+
+❌ Deciding or approving what we build (though you’ll help surface the context needed to make good decisions)
+
+❌ Shielding developers from users (instead, you should aim to invite an engineer for every user interview you do)
+
+❌ Project management / writing gazillions of tickets, RFCs, or PRDs
+
+❌ Coding and shipping new features yourself (small PRs and hackathon contributions are of course encouraged!)
+
+
+
+
+YOU’LL FIT RIGHT IN IF:
+
+ - You’ve been a technical founder or product engineer in a startup: We are explicitly looking for someone who has written code before and now wants to focus on the product and commercial side
+
+ - You have strong product sense - meaning you can identify a product’s biggest selling points and weaknesses (both user experience and commercial) and turn them into actionable insights that inform your team’s product decisions
+
+ - You’re familiar with business and product metrics (e.g. activation, retention, churn) and defining and tracking key product metrics. You don’t hesitate to write SQL (or another query language) to answer data questions
+
+ - You’re very proactive/organized, so you don’t wait to be told what to do. Instead, you figure out what needs to happen, make it happen and keep multiple threads moving forward without letting things slip
+
+ - You collaborate well as you default to transparency, share early, and seek feedback from the team and customers in an async-first world. Strong communication skills are the key to strong collaboration.
+
+ - You have hands-on experience using observability products and understand how engineers use them to investigate, debug, and diagnose issues in production.
+
+Nice-to-haves (We don’t expect you to tick all of these boxes, but at least 2-3 are a big plus):
+
+ - You’ve worked on or PM’d an observability product before.
+
+ - You have additional data modelling experience on top of writing queries.
+
+ - You’ve worked on a developer tool or AI product before.
+
+ - You’ve done a decent portion of interviewing users already. And looking at additional product management experience, you might have even worked with designers or engineers on new user experiences?
+
+If you have a disability, please let us know if there's any way we can make the interview process better for you - we're happy to accommodate! 
+
+#LI-DNI
