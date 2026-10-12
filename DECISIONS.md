@@ -76,3 +76,9 @@ Routine technical choices made during the build, newest last. Each: what, and wh
 38. **"Knit" on Greenhouse was a different company** (consumer research), so it's set to `other`. Generic names can mis-detect;
     triage still checks what each company actually builds, so a wrong board can't add a wrong "HR tech" tag.
 39. **`vercel.json` pins the framework to Next.js** (the project had been created as "Other" and served only `public/`).
+
+## Changes requested on 2026-10-12 (evening)
+40. **Window widened from 48h to 7 days** (`freshness_hours: 168`, Google filter `qdr:w`) for roles and hiring posts. Roles
+    that had expired under the 48h rule but are under 7 days old were re-opened. "Posted" shows hours under 2 days, then days.
+41. **The 90% mark is gone.** Badge colours are now green ≥70%, amber 50–69%, grey <50% (`thresholds` in `config.yaml`);
+    the header's "≥90%" count and the "Match ≥ 90%" filter were removed. The site reads both settings from `config.yaml`.

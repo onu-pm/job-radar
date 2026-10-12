@@ -5,9 +5,6 @@ import Link from "next/link";
 import type { JobRow, PostRow, RunRow } from "@/lib/data";
 import { setIncludeIndiaOnsite, setStatus, triggerRefresh } from "@/app/actions";
 
-const GREEN = 90;
-const AMBER = 70;
-
 const SOURCE_LABEL: Record<string, string> = {
   greenhouse: "Greenhouse",
   lever: "Lever",
@@ -34,12 +31,8 @@ const LOCATION_LABEL: Record<string, string> = {
 
 function ago(iso: string, now: number) {
   const h = Math.max(0, (now - new Date(iso).getTime()) / 3600e3);
-  return h < 1 ? `${Math.max(1, Math.round(h * 60))}m ago` : `${Math.floor(h)}h ago`;
-}
-
-function matchClass(pct: number | null) {
-  if (pct == null) return "m-none";
-  return pct >= GREEN ? "m-green" : pct >= AMBER ? "m-amber" : "m-grey";
+  if (h < 1) return `${Math.max(1, Math.round(h * 60))}m ago`;
+  return h < 48 ? `${Math.floor(h)}h ago` : `${Math.floor(h / 24)}d ago`;
 }
 
 export default function Dashboard(props: {
@@ -47,8 +40,14 @@ export default function Dashboard(props: {
   posts: PostRow[];
   lastRun: RunRow | null;
   includeIndiaOnsite: boolean;
+  thresholds: { green: number; amber: number };
+  freshnessHours: number;
   serverNow: number;
 }) {
+  const { green: GREEN, amber: AMBER } = props.thresholds;
+  const matchClass = (pct: number | null) =>
+    pct == null ? "m-none" : pct >= GREEN ? "m-green" : pct >= AMBER ? "m-amber" : "m-grey";
+  const windowLabel = props.freshnessHours % 24 === 0 ? `last ${props.freshnessHours / 24} days` : `last ${props.freshnessHours}h`;
   const router = useRouter();
   const [now, setNow] = useState(props.serverNow);
   useEffect(() => {
@@ -96,7 +95,6 @@ export default function Dashboard(props: {
     () => ({
       total: props.jobs.length,
       hr: props.jobs.filter((j) => j.domain === "hr_tech").length,
-      green: props.jobs.filter((j) => (j.matchPct ?? 0) >= GREEN).length,
       posts: props.posts.length,
     }),
     [props.jobs, props.posts],
@@ -158,7 +156,7 @@ export default function Dashboard(props: {
         <div className="brand">
           <h1>Job Radar</h1>
           <p className="muted">
-            {counts.total} roles ({counts.hr} HR tech) · {counts.green} at ≥{GREEN}% · {counts.posts} hiring posts · last 48h
+            {counts.total} roles ({counts.hr} HR tech) · {counts.posts} hiring posts · {windowLabel}
           </p>
         </div>
         <div className="top-right">
@@ -199,7 +197,6 @@ export default function Dashboard(props: {
             </select>
             <select value={minMatch} onChange={(e) => setMinMatch(Number(e.target.value))} aria-label="Minimum match">
               <option value={0}>Any match %</option>
-              <option value={50}>Match ≥ 50%</option>
               <option value={AMBER}>Match ≥ {AMBER}%</option>
               <option value={GREEN}>Match ≥ {GREEN}%</option>
             </select>
@@ -317,7 +314,7 @@ export default function Dashboard(props: {
           )}
         </>
       ) : (
-        <Posts posts={props.posts} now={now} onJump={(id) => { setTab("roles"); setOpen(id); setShowSkipped(true); }} />
+        <Posts posts={props.posts} now={now} windowLabel={windowLabel} onJump={(id) => { setTab("roles"); setOpen(id); setShowSkipped(true); }} />
       )}
     </main>
   );
@@ -353,8 +350,8 @@ function Detail({ j }: { j: JobRow }) {
   );
 }
 
-function Posts({ posts, now, onJump }: { posts: PostRow[]; now: number; onJump: (jobId: string) => void }) {
-  if (!posts.length) return <p className="empty">No hiring posts from the last 48 hours yet.</p>;
+function Posts({ posts, now, windowLabel, onJump }: { posts: PostRow[]; now: number; windowLabel: string; onJump: (jobId: string) => void }) {
+  if (!posts.length) return <p className="empty">No hiring posts from the {windowLabel} yet.</p>;
   return (
     <table className="grid posts">
       <thead>

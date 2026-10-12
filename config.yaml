@@ -13,11 +13,13 @@ pricing:
   google/gemma-4-31b-it:free: { input: 0, output: 0 }
   nvidia/nemotron-3-super-120b-a12b:free: { input: 0, output: 0 }
 
-freshness_hours: 48
+# Only roles/posts with a known posting date inside this window are shown (168h = 7 days).
+freshness_hours: 168
 
+# Match % badge colours: green ≥ green, amber ≥ amber, grey below.
 thresholds:
-  green: 90
-  amber: 70
+  green: 70
+  amber: 50
 
 # Keep a run cheap: cap how many NEW jobs get triaged / scored in one run.
 # Anything over the cap waits for the next run (it's still within 48h).
@@ -55,8 +57,8 @@ title_filter:
     - 'chief product'
 
 serper:
-  # Google's "past 48 hours" filter.
-  tbs: 'qdr:h48'
+  # Google's "past week" filter.
+  tbs: 'qdr:w'
   results_per_query: 10   # >10 costs 2 Serper credits per search
   # site:linkedin.com/jobs/view — individual LinkedIn job listings
   job_queries:

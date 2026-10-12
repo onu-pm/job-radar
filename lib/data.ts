@@ -1,6 +1,7 @@
 // Server-side data loading for the site. Only the fields the browser needs leave the server
 // (no full JD text, no resume text — just the short resume quotes behind each suggestion).
 import "server-only";
+import { config } from "@/pipeline/config";
 import { db, must } from "./db";
 
 export interface JobRow {
@@ -58,7 +59,8 @@ export interface RunRow {
 }
 
 export async function loadDashboard() {
-  const cutoff = new Date(Date.now() - 48 * 3600e3).toISOString();
+  const cfg = config();
+  const cutoff = new Date(Date.now() - cfg.freshness_hours * 3600e3).toISOString();
   const [jobsR, statusR, postsR, runR, setR] = await Promise.all([
     db()
       .from("jobs")
@@ -130,6 +132,8 @@ export async function loadDashboard() {
     posts,
     lastRun: (must<RunRow[]>(runR, "runs")[0] ?? null) as RunRow | null,
     includeIndiaOnsite: settings.find((s) => s.key === "include_india_onsite")?.value === true,
+    thresholds: cfg.thresholds,
+    freshnessHours: cfg.freshness_hours,
   };
 }
 

@@ -1,6 +1,6 @@
 # Job Radar
 
-A private, password-protected website that lists Product Manager roles posted in the **last 48 hours**,
+A private, password-protected website that lists Product Manager roles posted in the **last 7 days** (`freshness_hours` in `config.yaml`),
 scores each one against the master resume, and shows what to reword before applying. A second tab lists
 recent LinkedIn/X posts from people hiring PMs in HR tech and B2B SaaS.
 
@@ -12,7 +12,7 @@ recent LinkedIn/X posts from people hiring PMs in HR tech and B2B SaaS.
 ## Where things are
 | Path | What |
 |---|---|
-| `config.yaml` | Models, prices, 48h window, thresholds, title filters, Google queries |
+| `config.yaml` | Models, prices, 7-day window, colour thresholds, title filters, Google queries |
 | `TARGET_PROFILE.md` | What counts as a match — sent to the AI with every role. Edit freely. |
 | `resume/` | Master resume PDF (+ cached `resume.txt`) |
 | `pipeline/` | The refresh: sources, triage, scoring, JD resolver (`run.ts` is one full pass) |
