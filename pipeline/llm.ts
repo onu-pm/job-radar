@@ -15,6 +15,18 @@ export const usage: Usage = { calls: 0, inputTokens: 0, outputTokens: 0, costUsd
 
 export class LlmError extends Error {}
 
+/** Thrown when today's LLM call budget (limits.llm_calls_per_day) is used up. Never retried. */
+export class BudgetError extends Error {}
+
+/** Calls this process may still make; set by the pipeline from today's runs. Infinity = no cap. */
+let remaining = Infinity;
+export function setCallBudget(n: number) {
+  remaining = Math.max(0, n);
+}
+export function callsLeft() {
+  return remaining;
+}
+
 /** A validator returns the typed value, or throws with a reason. */
 export type Validator<T> = (raw: unknown) => T;
 
@@ -27,6 +39,8 @@ function parseJson(content: string): unknown {
 }
 
 async function callOnce(model: string, system: string, user: string, maxTokens: number): Promise<string> {
+  if (remaining <= 0) throw new BudgetError("daily LLM call budget used up");
+  remaining -= 1;
   const res = await fetch(ENDPOINT, {
     method: "POST",
     headers: {
@@ -40,6 +54,8 @@ async function callOnce(model: string, system: string, user: string, maxTokens: 
       max_tokens: maxTokens,
       response_format: { type: "json_object" },
       usage: { include: true },
+      // Reasoning models: think briefly and don't return the thinking, so the answer fits.
+      reasoning: { effort: "low", exclude: true },
       messages: [
         { role: "system", content: system },
         { role: "user", content: user },
@@ -75,10 +91,12 @@ export async function llmJson<T>(opts: {
   let lastErr: unknown;
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
-      const content = await callOnce(opts.model, opts.system, opts.user, opts.maxTokens ?? 4000);
+      const content = await callOnce(opts.model, opts.system, opts.user, opts.maxTokens ?? 8000);
       return opts.validate(parseJson(content));
     } catch (e) {
+      if (e instanceof BudgetError) throw e;
       if (e instanceof LlmError && !/ 5\d\d:| 429:/.test(e.message)) throw e; // auth/billing errors: don't retry
+      if (e instanceof LlmError && / 429:/.test(e.message)) await new Promise((r) => setTimeout(r, 15_000)); // free-tier rate limit
       lastErr = e;
     }
   }

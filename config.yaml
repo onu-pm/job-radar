@@ -1,13 +1,17 @@
 # Job Radar config. Change models, thresholds and queries here — never in code.
 
 models:
-  triage: anthropic/claude-haiku-5.5
-  scoring: anthropic/claude-sonnet-5.5
+  # Free models (no OpenRouter credit). To switch back to paid: anthropic/claude-haiku-5.5 and
+  # anthropic/claude-sonnet-5.5, and raise limits.llm_calls_per_day below.
+  triage: google/gemma-4-31b-it:free
+  scoring: nvidia/nemotron-3-super-120b-a12b:free
 
 # USD per 1M tokens, used only for the cost estimate on /status.
 pricing:
   anthropic/claude-haiku-5.5: { input: 0.10, output: 0.50 }
   anthropic/claude-sonnet-5.5: { input: 2.00, output: 10.00 }
+  google/gemma-4-31b-it:free: { input: 0, output: 0 }
+  nvidia/nemotron-3-super-120b-a12b:free: { input: 0, output: 0 }
 
 freshness_hours: 48
 
@@ -20,6 +24,10 @@ thresholds:
 limits:
   max_triage_per_run: 150
   max_score_per_run: 40
+  # Free OpenRouter models are capped per day (about 50 requests without purchased credit).
+  # The pipeline stops calling the LLM once today's runs (IST) have used this many calls.
+  llm_calls_per_day: 45
+  llm_concurrency: 1
   ats_concurrency: 6       # parallel company boards (still one request per board)
   http_timeout_ms: 15000
 

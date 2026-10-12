@@ -58,7 +58,7 @@ export function triage(lead: {
 }): Promise<Triage> {
   return llmJson({
     model: config().models.triage,
-    maxTokens: 1200,
+    maxTokens: 3000,
     system:
       "You screen job leads for one candidate. Be strict about facts in the text; never guess details that aren't there. Return only JSON matching the schema.",
     user: `CANDIDATE TARGET PROFILE:
