@@ -62,7 +62,10 @@ Extract 12–25 keywords that a recruiter would look for in a resume for this ro
 - Keep each term short (1–4 words), the way it would be written on a resume.
 - type "must" = stated as required/must-have or repeated; "nice" = preferred/bonus/mentioned once.
 - synonyms: 0–5 common variants a resume might use instead (e.g. "HRIS" → ["HRMS","HCM","HR system"]).
-- Skip generic fluff ("passionate", "team player", "fast-paced") and skip years of experience, degrees and locations.
+- Skip generic fluff ("passionate", "team player", "fast-paced").
+- Skip soft skills and personality traits ("communication", "detail-oriented", "proactive", "ownership", "judgment",
+  "collaboration"), work arrangements ("remote", "office attendance", "travel"), years of experience, degrees and locations.
+- Every keyword must be a skill, domain, tool, method or outcome a recruiter could find written on a resume.
 
 Schema: {"keywords":[{"term":str,"type":"must|nice","synonyms":[str]}]}`,
     validate: validateKeywords,
@@ -184,7 +187,9 @@ A. For each unmatched keyword, classify:
    - "fix": the resume already shows this experience in different words, so the candidate should reword
      before applying. Give \`resume_quote\` (copied EXACTLY, character for character, from ONE place in the
      resume, max 25 words, no "●" bullet) and \`suggested_wording\` (a truthful rewrite of that line that
-     includes the keyword).
+     includes the keyword). The rewrite must NEVER change a job title, seniority, company name, date or number,
+     and must not claim any tool, domain or scope the quoted line doesn't already show. If the only honest
+     rewrite would be a stretch, classify it "real_gap" instead.
    - "real_gap": no evidence in the resume. Give no quote and no suggestion. Never suggest adding it.
 B. fit: 0–100 for how seriously a hiring manager would consider this candidate, weighing domain match,
    PM type, level and location from the profile. 90+ = obvious shortlist; 70–89 = credible;

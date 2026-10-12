@@ -3,7 +3,7 @@
 models:
   # Free models (no OpenRouter credit). To switch back to paid: anthropic/claude-haiku-5.5 and
   # anthropic/claude-sonnet-5.5, and raise limits.llm_calls_per_day below.
-  triage: google/gemma-4-31b-it:free
+  triage: nvidia/nemotron-3-super-120b-a12b:free
   scoring: nvidia/nemotron-3-super-120b-a12b:free
 
 # USD per 1M tokens, used only for the cost estimate on /status.

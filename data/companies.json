@@ -642,9 +642,9 @@
     ],
     "domain": "hr_tech",
     "category": "HR unified APIs & integrations",
-    "ats": "greenhouse",
-    "slug": "knit",
-    "jobs_on_board": 18
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
   },
   {
     "name": "Bindbee",
