@@ -1,1 +1,35 @@
-.github/workflows/radar.yml
+name: radar
+
+on:
+  schedule:
+    - cron: "17 */3 * * *" # every 3 hours (at :17 to avoid GitHub's top-of-hour rush)
+  workflow_dispatch:
+    inputs:
+      trigger:
+        description: "Who started this run"
+        required: false
+        default: "manual"
+
+# Never run two refreshes at once.
+concurrency:
+  group: radar
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run pipeline
+        env:
+          RUN_TRIGGER: ${{ github.event_name == 'schedule' && 'schedule' || inputs.trigger || 'manual' }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
