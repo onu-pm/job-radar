@@ -12,6 +12,8 @@ export interface Config {
     max_score_per_run: number;
     ats_concurrency: number;
     http_timeout_ms: number;
+    llm_calls_per_day?: number;
+    llm_concurrency?: number;
   };
   title_filter: { include: string[]; exclude: string[] };
   serper: { tbs: string; results_per_query: number; job_queries: string[]; post_queries: string[] };

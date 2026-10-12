@@ -4,7 +4,7 @@ import { createHash } from "node:crypto";
 import { db, must } from "../lib/db";
 import { config, loadEnv } from "./config";
 import { getText, pool } from "./http";
-import { usage } from "./llm";
+import { BudgetError, callsLeft, setCallBudget, usage } from "./llm";
 import { BoardCache, resolveOnAts } from "./resolver";
 import { loadResume } from "./resume";
 import { scoreJob, type Keyword } from "./scoring";
@@ -35,6 +35,7 @@ async function stage(text: string) {
   await db().from("runs").update({ stage: text, sources: stats, removed, llm_calls: usage.calls, llm_cost_usd: usage.costUsd }).eq("id", runRow.id);
 }
 
+let budgetHit = false;
 function logError(source: string, msg: string) {
   stat(source).errors++;
   errors.push(`${source}: ${msg}`.slice(0, 400));
@@ -58,6 +59,16 @@ try {
   const resumeText = await loadResume();
   const settings = must<{ key: string; value: any }[]>(await db().from("settings").select("key,value"), "settings");
   const includeIndiaOnsite = settings.find((s) => s.key === "include_india_onsite")?.value === true;
+
+  // Daily LLM budget (free models are capped per day). "Today" = since 00:00 IST.
+  const istMidnight = new Date(Math.floor((now + 5.5 * 3600e3) / 86400e3) * 86400e3 - 5.5 * 3600e3).toISOString();
+  const today = must<{ llm_calls: number }[]>(
+    await db().from("runs").select("llm_calls").gte("started_at", istMidnight).neq("id", runRow.id),
+    "today's runs",
+  );
+  const usedToday = today.reduce((s, r) => s + (r.llm_calls ?? 0), 0);
+  setCallBudget((cfg.limits.llm_calls_per_day ?? Infinity) - usedToday);
+  console.log(`  LLM budget: ${usedToday} calls used today, ${callsLeft()} left`);
 
   // ---- 1. expire anything past the freshness window -------------------------------------------
   await stage("Removing roles older than 48h");
@@ -228,12 +239,16 @@ try {
   }
 
   // ---- 8. triage new roles (cheap model) -------------------------------------------------------
+  // Keep roughly two-thirds of today's budget for scoring roles that pass.
+  const triageCap = Math.min(cfg.limits.max_triage_per_run, Math.ceil(callsLeft() / 3));
   const pending = must<any[]>(
-    await db().from("jobs").select("id,source,company,title,location,jd_text").eq("state", "pending").order("posted_at", { ascending: false }).limit(cfg.limits.max_triage_per_run),
+    await db().from("jobs").select("id,source,company,title,location,jd_text").eq("state", "pending").order("posted_at", { ascending: false }).limit(triageCap),
     "pending jobs",
   );
   await stage(`Triaging ${pending.length} new roles`);
-  await pool(pending, 4, async (j) => {
+  const llmPool = cfg.limits.llm_concurrency ?? 3;
+  await pool(pending, llmPool, async (j) => {
+    if (budgetHit) return;
     try {
       const t = await triage({
         source: j.source === "linkedin_job" ? "linkedin_job" : ["greenhouse", "lever", "ashby", "workable", "smartrecruiters", "recruitee"].includes(j.source) ? "ats" : "remote_board",
@@ -259,7 +274,8 @@ try {
         })
         .eq("id", j.id);
     } catch (e) {
-      logError(j.source, `triage ${j.company} / ${j.title}: ${(e as Error).message}`);
+      if (e instanceof BudgetError) budgetHit = true;
+      else logError(j.source, `triage ${j.company} / ${j.title}: ${(e as Error).message}`);
     }
   });
 
@@ -272,11 +288,12 @@ try {
       .is("scored_at", null)
       .order("domain", { ascending: false }) // hr_tech before b2b_saas
       .order("posted_at", { ascending: false })
-      .limit(cfg.limits.max_score_per_run),
+      .limit(Math.min(cfg.limits.max_score_per_run, Math.floor(callsLeft() / 2))),
     "jobs to score",
   );
   await stage(`Scoring ${toScore.length} roles against the resume`);
-  await pool(toScore, 3, async (j) => {
+  await pool(toScore, llmPool, async (j) => {
+    if (budgetHit) return;
     try {
       const sc = await scoreJob({
         resumeText,
@@ -302,6 +319,10 @@ try {
         })
         .eq("id", j.id);
     } catch (e) {
+      if (e instanceof BudgetError) {
+        budgetHit = true;
+        return;
+      }
       logError(j.source, `score ${j.company} / ${j.title}: ${(e as Error).message}`);
       await db().from("jobs").update({ score_error: (e as Error).message.slice(0, 300) }).eq("id", j.id);
     }
@@ -341,9 +362,12 @@ try {
     }
   }
 
-  const pendingPosts = must<any[]>(await db().from("posts").select("id,platform,snippet").eq("state", "pending").limit(80), "pending posts");
+  const pendingPosts = budgetHit
+    ? []
+    : must<any[]>(await db().from("posts").select("id,platform,snippet").eq("state", "pending").order("posted_at", { ascending: false }).limit(Math.min(80, callsLeft())), "pending posts");
   if (pendingPosts.length) await stage(`Triaging ${pendingPosts.length} hiring posts`);
-  await pool(pendingPosts, 4, async (p) => {
+  await pool(pendingPosts, llmPool, async (p) => {
+    if (budgetHit) return;
     try {
       const t: Triage = await triage({ source: p.platform === "x" ? "x_post" : "linkedin_post", text: p.snippet });
       const ok = t.is_hiring_post && t.is_pm_role && t.domain !== "other" && t.level !== "too_junior" && t.level !== "too_senior";
@@ -362,7 +386,8 @@ try {
         })
         .eq("id", p.id);
     } catch (e) {
-      logError(`${p.platform}_post`, (e as Error).message);
+      if (e instanceof BudgetError) budgetHit = true;
+      else logError(`${p.platform}_post`, (e as Error).message);
     }
   });
 
@@ -403,7 +428,7 @@ try {
       llm_calls: usage.calls,
       llm_cost_usd: usage.costUsd,
       serper_queries: serperQueries,
-      errors,
+      errors: budgetHit ? [...errors, "LLM daily budget reached — remaining roles wait for the next run"] : errors,
     })
     .eq("id", runRow.id);
   console.log("\nDone.", JSON.stringify({ stats, removed, llm: usage, serperQueries }, null, 1));
