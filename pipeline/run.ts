@@ -10,9 +10,9 @@ import { loadResume } from "./resume";
 import { scoreJob, type Keyword } from "./scoring";
 import { fetchBoard, type BoardRef } from "./sources/ats";
 import { REMOTE_SOURCES } from "./sources/remote";
-import { linkedinJobHits, parseGoogleDate, parseLinkedinJobTitle, postHits, serperQueries } from "./sources/serper";
+import { dateFromPostUrl, linkedinJobHits, parseGoogleDate, parseLinkedinJobTitle, postHits, serperQueries } from "./sources/serper";
 import { decide, triage, type Triage } from "./triage";
-import { canonicalUrl, dedupeKey, isFresh, jobId, type Ats, type RawJob } from "./types";
+import { canonicalUrl, dedupeKey, isFresh, jobId, titlePasses, type Ats, type RawJob } from "./types";
 
 loadEnv();
 const cfg = config();
@@ -132,6 +132,10 @@ try {
         s.found++;
         const posted = parseGoogleDate(h.date);
         const p = parseLinkedinJobTitle(h.title);
+        if (!titlePasses(p.title)) {
+          s.filtered++; // same code-level title filter as every other source
+          continue;
+        }
         const known = p.company ? companyByName.get(p.company.toLowerCase()) : undefined;
         const ref = known && known.ats !== "other" && known.slug ? { companyId: known.id, company: known.name, ats: known.ats as Ats, slug: known.slug } : null;
         const onAts = await resolveOnAts({
@@ -339,7 +343,7 @@ try {
         const platform = /linkedin\.com/.test(h.link) ? "linkedin" : "x";
         const s = stat(`${platform}_post`);
         s.found++;
-        const posted = parseGoogleDate(h.date);
+        const posted = dateFromPostUrl(h.link) ?? parseGoogleDate(h.date);
         if (!isFresh(posted)) {
           s.too_old++;
           continue;

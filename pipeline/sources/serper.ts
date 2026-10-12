@@ -58,11 +58,30 @@ export async function postHits(): Promise<SerperHit[]> {
   return out.filter((h) => /linkedin\.com\/posts\/|(?:x|twitter)\.com\/[^/]+\/status\//.test(h.link));
 }
 
-/** "Deel hiring Product Manager, Integrations in India | LinkedIn" → company, title, location. */
+/**
+ * LinkedIn job titles as Google shows them:
+ *   "Deel hiring Product Manager, Integrations in India | LinkedIn"
+ *   "HRIS Project Manager at Fay Financial — Tampa, FL"
+ *   "Product Manager - Rippling - LinkedIn"
+ */
 export function parseLinkedinJobTitle(t: string): { company: string | null; title: string; location: string | null } {
-  const clean = t.replace(/\s*[|\-–]\s*LinkedIn\s*$/i, "").trim();
-  const m = clean.match(/^(.+?) hiring (.+?)(?: in (.+))?$/i);
+  const clean = t.replace(/\s*[|\-–]\s*LinkedIn\s*$/i, "").replace(/\s*\.\.\.$/, "").trim();
+  let m = clean.match(/^(.+?) hiring (.+?)(?: in (.+))?$/i);
   if (m) return { company: m[1].trim(), title: m[2].trim(), location: m[3]?.trim() ?? null };
+  m = clean.match(/^(.+?) at (.+?)(?:\s+[—–]\s+(.+))?$/);
+  if (m) return { company: m[2].trim(), title: m[1].trim(), location: m[3]?.trim() ?? null };
   const parts = clean.split(/\s+[-–|]\s+/);
-  return { company: parts[1] ?? null, title: parts[0], location: parts[2] ?? null };
+  return { company: parts.length > 1 ? parts[1] : null, title: parts[0], location: parts[2] ?? null };
+}
+
+/**
+ * LinkedIn post and X post IDs are time-based ("snowflake") IDs, so the posting time can be read from the
+ * link itself — no page fetch. LinkedIn: first 41 bits = ms since epoch. X: (id >> 22) + Twitter epoch.
+ */
+export function dateFromPostUrl(link: string): Date | null {
+  const li = link.match(/activity[-:](\d{18,20})/);
+  if (li) return new Date(Number(BigInt(li[1]) >> 22n));
+  const x = link.match(/(?:x|twitter)\.com\/[^/]+\/status\/(\d{15,20})/);
+  if (x) return new Date(Number(BigInt(x[1]) >> 22n) + 1288834974657);
+  return null;
 }

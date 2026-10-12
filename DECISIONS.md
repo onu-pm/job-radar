@@ -62,3 +62,17 @@ Routine technical choices made during the build, newest last. Each: what, and wh
 31. **Schedule: every 3 hours at :17** (GitHub's top-of-hour queue is slowest). Runs never overlap (`concurrency`).
 32. **"Refresh now" won't start a second run** if one started in the last 20 minutes.
 33. **Schema is applied by `npm run db:migrate`** (Postgres connection string in `.env`), so no hand-pasting SQL.
+
+## After the first live runs (2026-10-12)
+34. **Free OpenRouter models** (your choice): `nvidia/nemotron-3-super-120b-a12b:free` for both triage and scoring
+    (Gemma 4 was rate-limited upstream). Daily cap of 45 LLM calls (free tier ≈ 50/day), counted from 00:00 IST across runs;
+    a run stops calling the LLM at the cap and the rest waits for the next run. One call at a time.
+35. **Prompt tightening after the first scorecards:** keyword extraction skips soft skills and work arrangements; rewrites may never
+    change a title, seniority, company, date or number (the free model had suggested "Product Management Lead").
+36. **Hiring-post dates come from the post link itself.** LinkedIn `activity-…` and X `status/…` IDs encode the posting time
+    (Google shows no date for posts). No page is fetched.
+37. **LinkedIn job titles get the same code-level title filter** as every other source, and the company name is read from both
+    "Company hiring Role in Place" and "Role at Company — Place" patterns.
+38. **"Knit" on Greenhouse was a different company** (consumer research), so it's set to `other`. Generic names can mis-detect;
+    triage still checks what each company actually builds, so a wrong board can't add a wrong "HR tech" tag.
+39. **`vercel.json` pins the framework to Next.js** (the project had been created as "Other" and served only `public/`).
