@@ -1,12 +1,16 @@
 // Seed list. HR tech comes from _old/COMPANIES_SEED.md; B2B SaaS is remote-friendly companies that
 // often hire PMs across time zones. `slugs` are extra guesses for the ATS probe (name-based guesses are automatic).
 // Loaded into the `companies` table by `npm run detect-ats`; add more companies later on the site's database.
+import { HR_MORE } from "./hr_more";
+import { DISCOVERED } from "./discovered";
 
 export interface SeedCompany {
   name: string;
   domain: "hr_tech" | "b2b_saas";
   category: string;
   slugs?: string[];
+  /** Board slugs known to belong to a different company with the same name. */
+  skipSlugs?: string[];
 }
 
 const hr = (category: string, names: (string | [string, string[]])[]): SeedCompany[] =>
@@ -14,7 +18,7 @@ const hr = (category: string, names: (string | [string, string[]])[]): SeedCompa
 const saas = (category: string, names: (string | [string, string[]])[]): SeedCompany[] =>
   names.map((n) => (Array.isArray(n) ? { name: n[0], slugs: n[1], domain: "b2b_saas", category } : { name: n, domain: "b2b_saas", category }));
 
-export const SEED: SeedCompany[] = [
+const BASE: SeedCompany[] = [
   // ---------------- HR tech ----------------
   ...hr("HRIS / HRMS / HCM", [
     "Darwinbox", ["Keka", ["kekahr", "keka-hr"]], ["greytHR", ["greythr", "greytip"]], ["Zoho People", ["zoho"]], "HROne",
@@ -32,7 +36,7 @@ export const SEED: SeedCompany[] = [
     "Pilot", "Native Teams", "Remofirst", "Panther", "Worksuite", "Gloroots", "Wisemonk", "INS Global",
   ]),
   ...hr("HR unified APIs & integrations", [
-    ["Knit", ["knit", "getknit"]], "Bindbee", ["Merge", ["merge"]], ["Finch", ["finch", "tryfinch"]], ["Kombo", ["kombo"]],
+    ["Knit", ["getknit"]], "Bindbee", ["Merge", ["merge"]], ["Finch", ["finch", "tryfinch"]], ["Kombo", ["kombo"]],
     "Apideck", ["Unified.to", ["unifiedto", "unified"]], "Truto", "Flexspring", "Rollout", "Paragon", "Prismatic",
   ]),
   ...hr("Recruiting / ATS / talent", [
@@ -82,3 +86,15 @@ export const SEED: SeedCompany[] = [
     "Navan", "Vanta", "Drata", "Druva",
   ]),
 ];
+
+/** Base list + extra HR tech + companies discovered by search, de-duplicated by name (case-insensitive). */
+export const SEED: SeedCompany[] = (() => {
+  const seen = new Set<string>();
+  const SKIP: Record<string, string[]> = { Knit: ["knit"], Mesh: ["mesh"], Disco: ["disco"] }; // same name, different company
+  return [...BASE, ...HR_MORE, ...DISCOVERED].map((c) => (SKIP[c.name] ? { ...c, skipSlugs: SKIP[c.name] } : c)).filter((c) => {
+    const k = c.name.toLowerCase().replace(/[^a-z0-9]/g, "");
+    if (seen.has(k)) return false;
+    seen.add(k);
+    return true;
+  });
+})();

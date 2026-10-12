@@ -28,7 +28,7 @@ const sameCompany = (ours: string, theirs: string | null) => {
 };
 
 async function detect(c: SeedCompany): Promise<CompanyRow> {
-  const slugs = slugCandidates(c.name, c.slugs ?? []);
+  const slugs = slugCandidates(c.name, c.slugs ?? []).filter((s) => !(c.skipSlugs ?? []).includes(s));
   // An empty board is a weak hit: keep looking for a board with jobs, fall back to the empty one.
   // Workable answers for dormant/unrelated account names, so an empty Workable board never counts.
   let weak: CompanyRow | null = null;
@@ -36,7 +36,8 @@ async function detect(c: SeedCompany): Promise<CompanyRow> {
     const tries = ats === "smartrecruiters" ? [...slugs, c.name.replace(/[^A-Za-z0-9]/g, "")] : slugs;
     for (const slug of [...new Set(tries)]) {
       const hit = await probe(ats, slug);
-      if (!hit || !sameCompany(c.name, hit.boardName)) continue;
+      // Slugs written into the seed list by hand are trusted even if the board's display name differs ("G-P").
+      if (!hit || (!(c.slugs ?? []).includes(slug) && !sameCompany(c.name, hit.boardName))) continue;
       if (hit.jobs > 0) return { ...c, ats, slug, jobs_on_board: hit.jobs };
       if (ats !== "workable") weak ??= { ...c, ats, slug, jobs_on_board: 0 };
     }
@@ -47,6 +48,7 @@ async function detect(c: SeedCompany): Promise<CompanyRow> {
 const t0 = Date.now();
 const rows = await pool(SEED, 8, async (c) => {
   const old = prevByName.get(c.name);
+  if (old && old.slug && (c.skipSlugs ?? []).includes(old.slug)) return { ...c, ats: "other" as const, slug: null, jobs_on_board: null };
   const weakOld = old && (old.jobs_on_board === 0 || old.ats === "workable");
   if (old && !all && !(redoWeak && weakOld) && (old.ats !== "other" || redoWeak)) return { ...c, ats: old.ats, slug: old.slug, jobs_on_board: old.jobs_on_board };
   const r = await detect(c);

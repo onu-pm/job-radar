@@ -471,9 +471,9 @@
     ],
     "domain": "hr_tech",
     "category": "Payroll, EOR & global employment",
-    "ats": "other",
-    "slug": null,
-    "jobs_on_board": null
+    "ats": "greenhouse",
+    "slug": "globalizationpartners",
+    "jobs_on_board": 49
   },
   {
     "name": "Atlas HXM",
@@ -637,11 +637,13 @@
   {
     "name": "Knit",
     "slugs": [
-      "knit",
       "getknit"
     ],
     "domain": "hr_tech",
     "category": "HR unified APIs & integrations",
+    "skipSlugs": [
+      "knit"
+    ],
     "ats": "other",
     "slug": null,
     "jobs_on_board": null
@@ -1106,9 +1108,12 @@
     "name": "Mesh",
     "domain": "hr_tech",
     "category": "Performance, engagement & L&D",
-    "ats": "greenhouse",
-    "slug": "mesh",
-    "jobs_on_board": 17
+    "skipSlugs": [
+      "mesh"
+    ],
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
   },
   {
     "name": "Engagedly",
@@ -2548,5 +2553,1048 @@
     "ats": "greenhouse",
     "slug": "druva",
     "jobs_on_board": 35
+  },
+  {
+    "name": "Ciphr",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Cezanne HR",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "smartrecruiters",
+    "slug": "cezannehr",
+    "jobs_on_board": 17
+  },
+  {
+    "name": "PeopleForce",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Zelt",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Hofy",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "ChartHop",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "ashby",
+    "slug": "charthop",
+    "jobs_on_board": 2
+  },
+  {
+    "name": "Pando",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Peoplebox",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Sprout Solutions",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Workforce.com",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Tanda",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "HR Cloud",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Paycompliance",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Neeyamo",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Zalaris",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "CloudPay",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Ontop",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Bitwage",
+    "domain": "hr_tech",
+    "category": "HRIS / HRMS / HCM",
+    "ats": "greenhouse",
+    "slug": "bitwage",
+    "jobs_on_board": 0
+  },
+  {
+    "name": "Omnipresent",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Remote People",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "greenhouse",
+    "slug": "remotepeople",
+    "jobs_on_board": 13
+  },
+  {
+    "name": "Boundless",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Localyze",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Jobbatical",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "smartrecruiters",
+    "slug": "jobbatical",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "Envoy Global",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "ashby",
+    "slug": "envoy",
+    "jobs_on_board": 22
+  },
+  {
+    "name": "Firstbase",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Workwize",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "greenhouse",
+    "slug": "workwize",
+    "jobs_on_board": 18
+  },
+  {
+    "name": "Allwhere",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Pinwheel",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "smartrecruiters",
+    "slug": "pinwheel",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "Argyle",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Atomic",
+    "domain": "hr_tech",
+    "category": "Payroll, EOR & global employment",
+    "ats": "ashby",
+    "slug": "atomic",
+    "jobs_on_board": 11
+  },
+  {
+    "name": "Breezy HR",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "JazzHR",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Comeet",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Recooty",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Hireology",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "iCIMS",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Jobvite",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "lever",
+    "slug": "jobvite",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "Employ",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "lever",
+    "slug": "employ",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "SeekOut",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "greenhouse",
+    "slug": "seekout",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "hireEZ",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "greenhouse",
+    "slug": "hireez",
+    "jobs_on_board": 0
+  },
+  {
+    "name": "Fetcher",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Findem",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "lever",
+    "slug": "findem",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "Avature",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Cornerstone",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "greenhouse",
+    "slug": "cornerstone",
+    "jobs_on_board": 3
+  },
+  {
+    "name": "Harver",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "smartrecruiters",
+    "slug": "harver",
+    "jobs_on_board": 4
+  },
+  {
+    "name": "TestGorilla",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "ashby",
+    "slug": "testgorilla",
+    "jobs_on_board": 4
+  },
+  {
+    "name": "Vervoe",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "smartrecruiters",
+    "slug": "vervoe",
+    "jobs_on_board": 8
+  },
+  {
+    "name": "Codility",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "CodeSignal",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Karat",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "greenhouse",
+    "slug": "karat",
+    "jobs_on_board": 15
+  },
+  {
+    "name": "Coderbyte",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Glider AI",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "smartrecruiters",
+    "slug": "gliderai",
+    "jobs_on_board": 8
+  },
+  {
+    "name": "Talview",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Interviewer.AI",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Pillar",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "lever",
+    "slug": "pillar",
+    "jobs_on_board": 0
+  },
+  {
+    "name": "Ribbon",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "lever",
+    "slug": "ribbon",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "Tezi",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Paraform",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "ashby",
+    "slug": "paraform",
+    "jobs_on_board": 16
+  },
+  {
+    "name": "Moonhub",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Hireflow",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Talent500",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Hirequotient",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Skillate",
+    "domain": "hr_tech",
+    "category": "Recruiting / ATS / talent",
+    "ats": "smartrecruiters",
+    "slug": "skillate",
+    "jobs_on_board": 10
+  },
+  {
+    "name": "Small Improvements",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "PerformYard",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Windmill",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Confirm",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Nectar",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Motivosity",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Awardco",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "greenhouse",
+    "slug": "awardco",
+    "jobs_on_board": 10
+  },
+  {
+    "name": "Workhuman",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "ashby",
+    "slug": "workhuman",
+    "jobs_on_board": 9
+  },
+  {
+    "name": "Achievers",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "lever",
+    "slug": "achievers",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "Benevity",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "ashby",
+    "slug": "benevity",
+    "jobs_on_board": 21
+  },
+  {
+    "name": "Staffbase",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "greenhouse",
+    "slug": "staffbase",
+    "jobs_on_board": 23
+  },
+  {
+    "name": "Simpplr",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "greenhouse",
+    "slug": "simpplr",
+    "jobs_on_board": 2
+  },
+  {
+    "name": "Workvivo",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Haiilo",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Firstup",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "lever",
+    "slug": "firstup",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "Sociabble",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "smartrecruiters",
+    "slug": "sociabble",
+    "jobs_on_board": 3
+  },
+  {
+    "name": "Absorb LMS",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "ashby",
+    "slug": "absorblms",
+    "jobs_on_board": 25
+  },
+  {
+    "name": "Epignosis",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Uplimit",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Disco",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "skipSlugs": [
+      "disco"
+    ],
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Eletive",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Culture Monkey",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Qualee",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Klaus",
+    "domain": "hr_tech",
+    "category": "Performance, engagement & L&D",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Pave",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "ashby",
+    "slug": "pave",
+    "jobs_on_board": 0
+  },
+  {
+    "name": "Assemble",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "ashby",
+    "slug": "assemble",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "Compa",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "ashby",
+    "slug": "compa",
+    "jobs_on_board": 3
+  },
+  {
+    "name": "Ravio",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "ashby",
+    "slug": "ravio",
+    "jobs_on_board": 4
+  },
+  {
+    "name": "Figures",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Payscale",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "ashby",
+    "slug": "payscale",
+    "jobs_on_board": 14
+  },
+  {
+    "name": "Syndio",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "greenhouse",
+    "slug": "syndio",
+    "jobs_on_board": 14
+  },
+  {
+    "name": "Comprehensive",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Kamsa",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Visier",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "One Model",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "greenhouse",
+    "slug": "onemodel",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "Crunchr",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Orgvue",
+    "domain": "hr_tech",
+    "category": "Compensation & people analytics",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Nayya",
+    "domain": "hr_tech",
+    "category": "Benefits & employee wellbeing",
+    "ats": "greenhouse",
+    "slug": "nayya",
+    "jobs_on_board": 5
+  },
+  {
+    "name": "Leapfrog",
+    "domain": "hr_tech",
+    "category": "Benefits & employee wellbeing",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Modern Health",
+    "domain": "hr_tech",
+    "category": "Benefits & employee wellbeing",
+    "ats": "greenhouse",
+    "slug": "modernhealth",
+    "jobs_on_board": 8
+  },
+  {
+    "name": "Spring Health",
+    "domain": "hr_tech",
+    "category": "Benefits & employee wellbeing",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Lyra Health",
+    "domain": "hr_tech",
+    "category": "Benefits & employee wellbeing",
+    "ats": "ashby",
+    "slug": "lyrahealth",
+    "jobs_on_board": 0
+  },
+  {
+    "name": "Headspace",
+    "domain": "hr_tech",
+    "category": "Benefits & employee wellbeing",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Wellhub",
+    "domain": "hr_tech",
+    "category": "Benefits & employee wellbeing",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Legion",
+    "domain": "hr_tech",
+    "category": "Workforce management",
+    "ats": "greenhouse",
+    "slug": "legion",
+    "jobs_on_board": 19
+  },
+  {
+    "name": "Shiftboard",
+    "domain": "hr_tech",
+    "category": "Workforce management",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Humanity",
+    "domain": "hr_tech",
+    "category": "Workforce management",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Rotaready",
+    "domain": "hr_tech",
+    "category": "Workforce management",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Skedulo",
+    "domain": "hr_tech",
+    "category": "Workforce management",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Zinc Work",
+    "domain": "hr_tech",
+    "category": "Workforce management",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "First Advantage",
+    "domain": "hr_tech",
+    "category": "Background verification",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Veremark",
+    "domain": "hr_tech",
+    "category": "Background verification",
+    "ats": "smartrecruiters",
+    "slug": "veremark",
+    "jobs_on_board": 5
+  },
+  {
+    "name": "Xref",
+    "domain": "hr_tech",
+    "category": "Background verification",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Vouched",
+    "domain": "hr_tech",
+    "category": "Background verification",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Accurate Background",
+    "domain": "hr_tech",
+    "category": "Background verification",
+    "ats": "smartrecruiters",
+    "slug": "accuratebackground",
+    "jobs_on_board": 13
+  },
+  {
+    "name": "Atomicwork",
+    "domain": "hr_tech",
+    "category": "AI for HR / employee service",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Espressive",
+    "domain": "hr_tech",
+    "category": "AI for HR / employee service",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "MeBeBot",
+    "domain": "hr_tech",
+    "category": "AI for HR / employee service",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Spoke",
+    "domain": "hr_tech",
+    "category": "AI for HR / employee service",
+    "ats": "recruitee",
+    "slug": "spoke",
+    "jobs_on_board": 0
+  },
+  {
+    "name": "Hyperspace",
+    "domain": "hr_tech",
+    "category": "AI for HR / employee service",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
+  },
+  {
+    "name": "Sapling",
+    "domain": "hr_tech",
+    "category": "AI for HR / employee service",
+    "ats": "lever",
+    "slug": "sapling",
+    "jobs_on_board": 1
+  },
+  {
+    "name": "Enboarder",
+    "domain": "hr_tech",
+    "category": "AI for HR / employee service",
+    "ats": "greenhouse",
+    "slug": "enboarder",
+    "jobs_on_board": 5
+  },
+  {
+    "name": "ClickBoarding",
+    "domain": "hr_tech",
+    "category": "AI for HR / employee service",
+    "ats": "smartrecruiters",
+    "slug": "clickboarding",
+    "jobs_on_board": 7
+  },
+  {
+    "name": "Rain",
+    "domain": "hr_tech",
+    "category": "Earned-wage access & employee finance",
+    "ats": "ashby",
+    "slug": "rain",
+    "jobs_on_board": 43
+  },
+  {
+    "name": "Clair",
+    "domain": "hr_tech",
+    "category": "Earned-wage access & employee finance",
+    "ats": "ashby",
+    "slug": "clair",
+    "jobs_on_board": 10
+  },
+  {
+    "name": "Branch",
+    "domain": "hr_tech",
+    "category": "Earned-wage access & employee finance",
+    "ats": "greenhouse",
+    "slug": "branch",
+    "jobs_on_board": 2
+  },
+  {
+    "name": "Even",
+    "domain": "hr_tech",
+    "category": "Earned-wage access & employee finance",
+    "ats": "other",
+    "slug": null,
+    "jobs_on_board": null
   }
 ]

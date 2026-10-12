@@ -16,7 +16,8 @@
     "pipeline": "tsx pipeline/run.ts",
     "dry-run": "tsx pipeline/cli/dry-run.ts",
     "detect-ats": "tsx pipeline/cli/detect-ats.ts",
-    "db:migrate": "tsx pipeline/cli/migrate.ts"
+    "db:migrate": "tsx pipeline/cli/migrate.ts",
+    "hr-remote-india": "tsx pipeline/cli/hr-remote-india.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.117.3",
